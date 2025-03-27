@@ -83,6 +83,7 @@ topMenuEl.addEventListener("click", (e) => {
     }
   });
 
+  // get the clicked menu and assigned to variable.
   let clickedMenu;
   for (let links of menuLinks) {
     if (links.text === e.target.textContent) {
@@ -91,6 +92,8 @@ topMenuEl.addEventListener("click", (e) => {
     }
   }
 
+  //  check the clicked menu has class of active,
+  //  if yes style the subMenuEl
   if (
     clickedMenu &&
     clickedMenu.subLinks &&
