@@ -1,9 +1,33 @@
 const menuLinks = [
   { text: "about", href: "/about" },
-  { text: "catalog", href: "/catalog" },
-  { text: "orders", href: "/orders" },
-  { text: "account", href: "/account" },
+  {
+    text: "catalog",
+    href: "#",
+    subLinks: [
+      { text: "all", href: "/catalog/all" },
+      { text: "top selling", href: "/catalog/top" },
+      { text: "search", href: "/catalog/search" },
+    ],
+  },
+  {
+    text: "orders",
+    href: "#",
+    subLinks: [
+      { text: "new", href: "/orders/new" },
+      { text: "pending", href: "/orders/pending" },
+      { text: "history", href: "/orders/history" },
+    ],
+  },
+  {
+    text: "account",
+    href: "#",
+    subLinks: [
+      { text: "profile", href: "/account/profile" },
+      { text: "sign out", href: "/account/signout" },
+    ],
+  },
 ];
+
 let mainEl = document.querySelector("main");
 let topMenuEl = document.getElementById("top-menu");
 
@@ -16,14 +40,6 @@ mainEl.classList.add("flex-ctr");
 topMenuEl.style.height = "100%";
 topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
 topMenuEl.classList.add("flex-around");
-
-// part 3
-// for (let item of menuLinks) {
-//   let link = document.createElement("a");
-//   link.setAttribute("href", item.href);
-//   link.textContent = item.text;
-//   topMenuEl.appendChild(link);
-// }
 
 // part 3 with .forEach
 menuLinks.forEach((item) => {
@@ -41,5 +57,23 @@ subMenuEl.style.height = "100%";
 subMenuEl.style.background = "var(--sub-menu-bg)";
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
-
 subMenuEl.classList.add("flex-around");
+
+///////////////////////////
+// Adding Menu Interaction
+let topMenuLinks = document.querySelectorAll("a");
+
+topMenuEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target === topMenuLinks) {
+    return;
+  }
+  // iterate over <a> tags and toggle the active class
+  topMenuLinks.forEach((topLink) => {
+    if (topLink === e.target) {
+      topLink.classList.add("active");
+    } else {
+      topLink.classList.remove("active");
+    }
+  });
+});
