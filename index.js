@@ -39,5 +39,7 @@ let subMenuEl = document.getElementById("sub-menu");
 
 subMenuEl.style.height = "100%";
 subMenuEl.style.background = "var(--sub-menu-bg)";
+subMenuEl.style.position = "absolute";
+subMenuEl.style.top = "0";
 
 subMenuEl.classList.add("flex-around");
