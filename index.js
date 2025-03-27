@@ -65,15 +65,25 @@ let topMenuLinks = document.querySelectorAll("a");
 
 topMenuEl.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target === topMenuLinks) {
+  if (e.target.tagName !== "A") {
     return;
   }
+
   // iterate over <a> tags and toggle the active class
   topMenuLinks.forEach((topLink) => {
-    if (topLink === e.target) {
+    if (e.target === topLink) {
       topLink.classList.add("active");
     } else {
       topLink.classList.remove("active");
     }
   });
+
+  for (links of menuLinks) {
+    if (links.subLinks) {
+      subMenuEl.style.top = "100%";
+    } else {
+      subMenuEl.style.top = "0";
+    }
+  }
 });
+
