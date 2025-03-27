@@ -72,18 +72,32 @@ topMenuEl.addEventListener("click", (e) => {
   // iterate over <a> tags and toggle the active class
   topMenuLinks.forEach((topLink) => {
     if (e.target === topLink) {
-      topLink.classList.add("active");
+      if (topLink.classList.contains("active")) {
+        topLink.classList.remove("active");
+        subMenuEl.style.top = "0";
+      } else {
+        topLink.classList.add("active");
+      }
     } else {
       topLink.classList.remove("active");
     }
   });
 
-  for (links of menuLinks) {
-    if (links.subLinks) {
-      subMenuEl.style.top = "100%";
-    } else {
-      subMenuEl.style.top = "0";
+  let clickedMenu;
+  for (let links of menuLinks) {
+    if (links.text === e.target.textContent) {
+      clickedMenu = links;
+      break;
     }
   }
-});
 
+  if (
+    clickedMenu &&
+    clickedMenu.subLinks &&
+    e.target.classList.contains("active")
+  ) {
+    subMenuEl.style.top = "100%";
+  } else {
+    subMenuEl.style.top = "0";
+  }
+});
