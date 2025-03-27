@@ -32,3 +32,12 @@ menuLinks.forEach((item) => {
   aTag.textContent = item.text;
   topMenuEl.appendChild(aTag);
 });
+
+//////////////////////////
+//// Creating the Submenu
+let subMenuEl = document.getElementById("sub-menu");
+
+subMenuEl.style.height = "100%";
+subMenuEl.style.background = "var(--sub-menu-bg)";
+
+subMenuEl.classList.add("flex-around");
