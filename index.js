@@ -92,7 +92,7 @@ topMenuEl.addEventListener("click", (e) => {
     }
   }
 
-  //  check the clicked menu has class of active,
+  //  check the clicked menu thru and has subLinks and class of active,
   //  if yes style the subMenuEl
   if (
     clickedMenu &&
@@ -104,3 +104,15 @@ topMenuEl.addEventListener("click", (e) => {
     subMenuEl.style.top = "0";
   }
 });
+
+//// create helper function
+function buildSubMenu(subLinks) {
+  subMenuEl.innerHTML = "";
+  subLinks.forEach((link) => {
+    let aTag = document.createElement("a");
+    aTag.href = link.href;
+    aTag.textContent = link.text;
+    subMenuEl.appendChild(aTag);
+  });
+}
+
