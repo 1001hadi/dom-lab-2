@@ -69,6 +69,8 @@ topMenuEl.addEventListener("click", (e) => {
     return;
   }
 
+  ////
+  //Adding Submenu Interaction
   // iterate over <a> tags and toggle the active class
   topMenuLinks.forEach((topLink) => {
     if (e.target === topLink) {
@@ -83,7 +85,7 @@ topMenuEl.addEventListener("click", (e) => {
     }
   });
 
-  // get the clicked menu and assigned to variable.
+  // get the clicked menu and assigned to variable
   let clickedMenu;
   for (let links of menuLinks) {
     if (links.text === e.target.textContent) {
@@ -92,13 +94,15 @@ topMenuEl.addEventListener("click", (e) => {
     }
   }
 
-  //  check the clicked menu thru and has subLinks and class of active,
+  //  check the clicked menu thru and has subLinks and class of active
   //  if yes style the subMenuEl
+  // helper function should called in this section to build the subMenu items
   if (
     clickedMenu &&
     clickedMenu.subLinks &&
     e.target.classList.contains("active")
   ) {
+    buildSubMenu(clickedMenu.subLinks);
     subMenuEl.style.top = "100%";
   } else {
     subMenuEl.style.top = "0";
@@ -115,4 +119,3 @@ function buildSubMenu(subLinks) {
     subMenuEl.appendChild(aTag);
   });
 }
-
